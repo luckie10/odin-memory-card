@@ -7,7 +7,7 @@ export default function App() {
   return (
     <>
       <Scoreboard />
-      <Gameboard />
+      <Gameboard deckSize={3} />
     </>
   );
 }
