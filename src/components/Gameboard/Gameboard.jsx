@@ -18,12 +18,31 @@ export default function Gameboard({ deckSize }) {
     return shuffleArray(dealt);
   }
 
+  function selectCard(selectedCard) {
+    console.log(selectedCard);
+    if (selectedCard.selected) {
+      // TODO: set high score
+      // reset current score
+      console.log(selectedCard.name, "has already been selected");
+      setDeck([...deck.map((card) => ({ ...card, selected: false }))]);
+      return;
+    }
+
+    setDeck(
+      deck.map((card) => {
+        if (card.id !== selectedCard.id) return card;
+
+        return { ...card, selected: true };
+      }),
+    );
+  }
+
   useEffect(() => {
     (async () => {
       const P = new Pokedex({ cacheImages: true });
 
       const deckTemplate = Array(deckSize)
-        .fill({ clicked: false })
+        .fill({ selected: false })
         .map((card, index) => ({ ...card, id: index + 1 }));
 
       setDeck(
@@ -49,7 +68,7 @@ export default function Gameboard({ deckSize }) {
   return (
     <>
       {dealtCards.map((card) => (
-        <Card key={card.id} card={card} />
+        <Card key={card.id} card={card} onSelect={selectCard} />
       ))}
     </>
   );
