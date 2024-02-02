@@ -3,7 +3,12 @@ import Card from "../Card";
 import { Pokedex } from "pokeapi-js-wrapper";
 import { shuffleArray } from "../../helpers/shuffle";
 
-export default function Gameboard({ deckSize }) {
+export default function Gameboard({
+  deckSize,
+  setCurrentScore,
+  setNewHighScore,
+  currentScore,
+}) {
   const [deck, setDeck] = useState([]);
   const [dealtCards, setDealtCards] = useState([]);
 
@@ -19,10 +24,9 @@ export default function Gameboard({ deckSize }) {
   }
 
   function selectCard(selectedCard) {
-    console.log(selectedCard);
     if (selectedCard.selected) {
-      // TODO: set high score
-      // reset current score
+      setNewHighScore();
+      setCurrentScore(0);
       console.log(selectedCard.name, "has already been selected");
       setDeck([...deck.map((card) => ({ ...card, selected: false }))]);
       return;
@@ -35,6 +39,7 @@ export default function Gameboard({ deckSize }) {
         return { ...card, selected: true };
       }),
     );
+    setCurrentScore(currentScore + 1);
   }
 
   useEffect(() => {
