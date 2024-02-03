@@ -1,0 +1,15 @@
+.card {
+  border: 1px white solid;
+  padding: 2em;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.card img {
+  width: 100%;
+}
+
+.card-name {
+  text-transform: uppercase;
+}

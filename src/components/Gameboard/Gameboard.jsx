@@ -3,6 +3,8 @@ import Card from "../Card";
 import { Pokedex } from "pokeapi-js-wrapper";
 import { shuffleArray } from "../../helpers/shuffle";
 
+import "./Gameboard.style.css";
+
 export default function Gameboard({
   deckSize,
   setCurrentScore,
@@ -71,10 +73,10 @@ export default function Gameboard({
   }, [deck]);
 
   return (
-    <>
+    <div className="gameboard">
       {dealtCards.map((card) => (
         <Card key={card.id} card={card} onSelect={selectCard} />
       ))}
-    </>
+    </div>
   );
 }
