@@ -2,8 +2,13 @@
   border: 1px white solid;
   padding: 2em;
   display: flex;
-  flex-flow: column;
-  justify-content: space-between;
+  flex-direction: column;
+}
+
+.img-container {
+  display: flex;
+  align-content: center;
+  flex-grow: 2;
 }
 
 .card img {
