@@ -18,7 +18,7 @@ export default function App() {
     <>
       <Scoreboard currentScore={currentScore} highScore={highScore} />
       <Gameboard
-        deckSize={10}
+        deckSize={25}
         currentScore={currentScore}
         setCurrentScore={setCurrentScore}
         setNewHighScore={setNewHighScore}
